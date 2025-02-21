@@ -1,14 +1,63 @@
 package org.example.pages;
 
-import org.example.pages.Base.BasePage;
+import org.example.pages.base.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
 
 public class ContactPage extends BasePage {
     private final By contactNavLink = By.id("nav-contact");
+    private final By submitButton = By.linkText("Submit");
+    private final By forenameField = By.id("forename");
+    private final By emailField = By.id("email");
+    private final By messageField = By.id("message");
+    private final By submissionAlert = By.className("alert");
+    private final By modalProgressBar = By.className("progress-info");
+
+    //error messages
+    private final By forenameError = By.id("forename-err");
+    private final By emailError = By.id("email-err");
+    private final By messageError = By.id("message-err");
+
+
     public ContactPage() {
-        //wait for page to load and verify that "contact" is the active button in the navbar
-        waitForElementToBeClickable(contactNavLink, 2000);
-        Assert.assertTrue(find(contactNavLink).getDomAttribute("class").contains("active"), "Page navigation button not active");
+        //wait for "contact" to be the active button in the navbar
+        waitForElementToExist(contactNavLink, 1000);
+        waitForElementToHaveAttribute(contactNavLink, "class","active",1000);
     }
+
+    public void submitContactForm() {
+        click(submitButton);
+    }
+
+    public void populateContactForm(String forename, String email, String message) {
+        set(forenameField, forename);
+        set(emailField, email);
+        set(messageField, message);
+    }
+
+    public void waitForSuccessMessage() {
+        waitForElementToNotBeVisible(modalProgressBar, 10000);
+        waitForElementToHaveAttribute(submissionAlert, "class", "alert-success", 100);
+    }
+
+    public String getAlertMessage() {
+        return find(submissionAlert).getText();
+    }
+
+    public void waitForErrorMessage() {
+        waitForElementToHaveAttribute(submissionAlert, "class", "alert-error", 100);
+    }
+
+    public boolean forenameErrorExists(){
+        return !findElementList(forenameError).isEmpty();
+    }
+    public boolean emailErrorExists(){
+        return !findElementList(emailError).isEmpty();
+    }
+    public boolean messageErrorExists(){
+        return !findElementList(messageError).isEmpty();
+    }
+
+
 }

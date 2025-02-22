@@ -2,8 +2,6 @@ package org.example.pages;
 
 import org.example.pages.base.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.testng.Assert;
 
 public class ContactPage extends BasePage {
     private final By contactNavLink = By.id("nav-contact");

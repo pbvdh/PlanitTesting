@@ -18,7 +18,7 @@ public class BasePage {
         BasePage.driver = driver;
     }
 
-    //simplify common methods to be used by child pages
+    //simplify common methods to be used by pages inheriting from this class
     protected WebElement find(By locator) {
         return driver.findElement(locator);
     }
@@ -51,14 +51,15 @@ public class BasePage {
 
     protected void waitForElementToNotBeVisible(By locator, int milliseconds) {
         FluentWait<WebDriver> wait = new FluentWait<>(driver);
+        //Wait given amount of ms for element to be not visible, polling every 50ms
         wait.withTimeout(Duration.ofMillis(milliseconds));
         wait.pollingEvery(Duration.ofMillis(50));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
 
     protected List<WebElement> findElementList(By locator) {
-        List<WebElement> elementList = driver.findElements(locator);
-        return elementList;
+        //return a list of web elements all matching the given locator
+        return driver.findElements(locator);
     }
 
 }

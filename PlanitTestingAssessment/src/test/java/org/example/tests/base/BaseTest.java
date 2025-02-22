@@ -1,7 +1,6 @@
 package org.example.tests.base;
 
 import org.example.pages.base.BasePage;
-import org.example.pages.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -11,6 +10,9 @@ public class BaseTest {
     protected WebDriver driver;
     protected BasePage basePage;
 
+    /*
+    set up and tear down methods to be inherited by child tests
+    */
 
     @BeforeClass
     public void setUp(){

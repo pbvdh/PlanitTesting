@@ -2,7 +2,6 @@ package org.example.pages;
 
 import org.example.pages.base.BasePage;
 import org.openqa.selenium.By;
-import org.testng.Assert;
 
 public class HomePage extends BasePage {
 

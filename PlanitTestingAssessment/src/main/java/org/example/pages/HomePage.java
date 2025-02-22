@@ -10,7 +10,7 @@ public class HomePage extends BasePage {
 
     public HomePage(){
         //wait for page to load and verify that "home" is the active button in the navbar
-        waitForElementToExist(homeNavLink, 2000);
+        waitForElementToExist(homeNavLink, 1000);
         waitForElementToHaveAttribute(homeNavLink, "class", "active", 1000);
     }
 

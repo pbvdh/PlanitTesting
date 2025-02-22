@@ -30,7 +30,7 @@ public class ContactFormTests extends BaseTest {
         contactPage.submitContactForm();
 
         //validate successful submission message
-        contactPage.waitForSuccessMessage();
+        contactPage.waitForSuccessMessage(15000); //can fine tune based on how long of a wait should result in failure
         Assert.assertEquals(contactPage.getAlertMessage(), "Thanks " + forename + ", we appreciate your feedback.",
                 "\n Success alert should display correct message containing forename. \n");
     }

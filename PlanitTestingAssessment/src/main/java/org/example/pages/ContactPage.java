@@ -34,8 +34,8 @@ public class ContactPage extends BasePage {
         set(messageField, message);
     }
 
-    public void waitForSuccessMessage() {
-        waitForElementToNotBeVisible(modalProgressBar, 10000);
+    public void waitForSuccessMessage(int milliseconds) {
+        waitForElementToNotBeVisible(modalProgressBar, milliseconds);
         waitForElementToHaveAttribute(submissionAlert, "class", "alert-success", 100);
     }
 

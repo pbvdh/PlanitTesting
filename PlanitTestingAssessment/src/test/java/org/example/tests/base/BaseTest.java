@@ -2,9 +2,9 @@ package org.example.tests.base;
 
 import org.example.pages.base.BasePage;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
     protected WebDriver driver;
@@ -14,7 +14,7 @@ public class BaseTest {
     set up and tear down methods to be inherited by child tests
     */
 
-    @BeforeClass
+    @BeforeMethod
     public void setUp(){
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -22,7 +22,7 @@ public class BaseTest {
         basePage.setDriver(driver);
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void tearDown(){
         driver.quit();
     }

@@ -6,8 +6,6 @@ import org.example.tests.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.List;
-
 public class ShoppingCartTests extends BaseTest {
     protected String shopPageUrl = "https://jupiter.cloud.planittesting.com/#/shop";
     @Test
